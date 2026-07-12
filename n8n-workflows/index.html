@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>n8n Workflow Library | Atlas Digital Automation</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="../" class="back-link">Atlas Digital Automation</a>
+      <div>
+        <p class="eyebrow">n8n workflow library</p>
+        <h1>Workflow exports</h1>
+      </div>
+      <a class="header-link" href="workflows/index.json">Manifest</a>
+    </header>
+
+    <main class="layout">
+      <section class="toolbar" aria-label="Workflow filters">
+        <label>
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Workflow name, node, tag, trigger...">
+        </label>
+        <label>
+          <span>Status</span>
+          <select id="statusFilter">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="summary" aria-live="polite">
+        <div><strong id="workflowCount">0</strong><span>workflows</span></div>
+        <div><strong id="nodeCount">0</strong><span>nodes indexed</span></div>
+        <div><strong id="updatedAt">Never</strong><span>last export</span></div>
+      </section>
+
+      <section id="workflowGrid" class="workflow-grid" aria-label="Workflows"></section>
+
+      <section id="emptyState" class="empty-state" hidden>
+        <h2>No workflows found</h2>
+        <p>Export n8n workflow JSON files into <code>n8n-workflows/workflows</code>, then regenerate the manifest.</p>
+      </section>
+    </main>
+
+    <template id="workflowCardTemplate">
+      <article class="workflow-card">
+        <div class="card-head">
+          <h2></h2>
+          <span class="status"></span>
+        </div>
+        <p class="meta"></p>
+        <div class="node-list"></div>
+        <div class="card-actions">
+          <a class="open-link">Open JSON</a>
+          <button class="copy-button" type="button">Copy import JSON</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
